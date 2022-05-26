@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springcloud.mapper.DeptMapper">
+	<resultMap id="BaseResultMap"
+		type="com.springcloud.enttitys.Dept">
+		<result property="deptno" column="deptno" />
+		<result property="dname" column="dname" />
+		<result property="db_source" column="db_source" />
+	</resultMap>
+	<select id="get" resultMap="BaseResultMap">
+		SELECT * FROM dept
+		WHERE deptno =
+		#{deptno}
+	</select>
+	<select id="listAll" resultMap="BaseResultMap">
+		SELECT * FROM dept
+	</select>
+	<insert id="add" useGeneratedKeys="true" keyProperty="deptno">
+		INSERT
+		INTO
+		`dept` (dname, db_source)
+		VALUES
+		(#{dname}, DATABASE())
+	</insert>
+
+</mapper>
